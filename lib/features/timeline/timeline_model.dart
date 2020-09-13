@@ -1,11 +1,28 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 enum TimelineType { exercise, wake_up, water, food }
 
-class TimelineData {
-  const TimelineData(this.type);
+class TimelineData extends Equatable {
+  const TimelineData(
+    this.type, {
+    this.completed = false,
+  });
 
   final TimelineType type;
+  final bool completed;
+
+  TimelineData copyWith({
+    bool completed,
+  }) {
+    return TimelineData(
+      type,
+      completed: completed ?? this.completed,
+    );
+  }
+
+  @override
+  List<Object> get props => [type, completed];
 }
 
 extension TimelineTypeEx on TimelineType {
