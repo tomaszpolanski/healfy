@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healfy/features/timeline/timeline_model.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class TimelinePage extends StatelessWidget {
@@ -6,7 +7,7 @@ class TimelinePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: _Content(_mockData),
     );
   }
@@ -18,7 +19,7 @@ class _Content extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  final List<_TimelineData> data;
+  final List<TimelineData> data;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class _Content extends StatelessWidget {
                           alignment: TimelineAlign.manual,
                           lineX: 0.1,
                           isFirst: index == 0,
-                          isLast: data.last == d,
+                          isLast: index == data.length - 1,
                           indicatorStyle: IndicatorStyle(
                             width: 40,
                             height: 40,
@@ -51,7 +52,7 @@ class _Content extends StatelessWidget {
                                 color: Colors.blue,
                               ),
                               child: Icon(
-                                index == 0 ? Icons.alarm : Icons.accessibility,
+                                d.type.toIcon(),
                                 color: Colors.white,
                               ),
                             ),
@@ -83,13 +84,17 @@ class _Content extends StatelessWidget {
   }
 }
 
-class _TimelineData {
-  const _TimelineData(this.value);
-
-  final String value;
-}
-
-final _mockData = List.generate(10, (index) => _TimelineData('$index'));
+const _mockData = [
+  TimelineData(TimelineType.wake_up),
+  TimelineData(TimelineType.water),
+  TimelineData(TimelineType.exercise),
+  TimelineData(TimelineType.food),
+  TimelineData(TimelineType.water),
+  TimelineData(TimelineType.exercise),
+  TimelineData(TimelineType.food),
+  TimelineData(TimelineType.water),
+  TimelineData(TimelineType.exercise),
+];
 
 extension IterableEx<T> on Iterable<T> {
   Iterable<T> joinEx(T separator) sync* {
