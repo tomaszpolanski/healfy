@@ -50,29 +50,11 @@ class _ContentState extends State<_Content> {
                   children: <Widget>[
                     ..._data.mapIndexed(
                       (index, d) {
-                        return TimelineTile(
-                          alignment: TimelineAlign.manual,
-                          lineX: 0.1,
+                        return TimelineElement(
+                          d,
                           isFirst: index == 0,
                           isLast: index == _data.length - 1,
-                          indicatorStyle: IndicatorStyle(
-                            width: 40,
-                            height: 40,
-                            color: Colors.blue,
-                            indicator: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.blue,
-                              ),
-                              child: Icon(
-                                d.type.toIcon(),
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          rightChild: TimelineElement(
+                          child: TimelineTask(
                             d,
                             color: index % 4 == 0
                                 ? Colors.amberAccent
@@ -102,6 +84,49 @@ class _ContentState extends State<_Content> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class TimelineElement extends StatelessWidget {
+  const TimelineElement(
+    this.data, {
+    Key key,
+    @required this.isFirst,
+    @required this.isLast,
+    @required this.child,
+  }) : super(key: key);
+
+  final TimelineData data;
+  final bool isFirst;
+  final bool isLast;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return TimelineTile(
+      alignment: TimelineAlign.manual,
+      lineX: 0.1,
+      isFirst: isFirst,
+      isLast: isLast,
+      indicatorStyle: IndicatorStyle(
+        width: 40,
+        height: 40,
+        color: Colors.blue,
+        indicator: Container(
+          width: 40,
+          height: 40,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.blue,
+          ),
+          child: Icon(
+            data.type.toIcon(),
+            color: Colors.white,
+          ),
+        ),
+      ),
+      rightChild: child,
     );
   }
 }

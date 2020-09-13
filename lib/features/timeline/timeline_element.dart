@@ -3,8 +3,8 @@ import 'package:healfy/features/timeline/timeline_model.dart';
 
 const completeIconKey = Key('complete-icon');
 
-class TimelineElement extends StatelessWidget {
-  const TimelineElement(
+class TimelineTask extends StatelessWidget {
+  const TimelineTask(
     this.data, {
     @required this.color,
     @required this.onDone,
