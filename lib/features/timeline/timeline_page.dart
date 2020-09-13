@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:healfy/features/timeline/timeline_element.dart';
 import 'package:healfy/features/timeline/timeline_model.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class TimelinePage extends StatelessWidget {
-  const TimelinePage({Key key}) : super(key: key);
+  const TimelinePage(this.data, {Key key}) : super(key: key);
+  final List<TimelineData> data;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: _Content(_mockData),
+    return Scaffold(
+      body: _Content(data),
     );
   }
 }
 
-class _Content extends StatelessWidget {
+class _Content extends StatefulWidget {
   const _Content(
     this.data, {
     Key key,
   }) : super(key: key);
 
   final List<TimelineData> data;
+
+  @override
+  _ContentState createState() => _ContentState();
+}
+
+class _ContentState extends State<_Content> {
+  List<TimelineData> _data;
+
+  @override
+  void initState() {
+    super.initState();
+    _data = List.from(widget.data);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +48,13 @@ class _Content extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    ...data.mapIndexed(
+                    ..._data.mapIndexed(
                       (index, d) {
                         return TimelineTile(
                           alignment: TimelineAlign.manual,
                           lineX: 0.1,
                           isFirst: index == 0,
-                          isLast: index == data.length - 1,
+                          isLast: index == _data.length - 1,
                           indicatorStyle: IndicatorStyle(
                             width: 40,
                             height: 40,
@@ -57,10 +72,8 @@ class _Content extends StatelessWidget {
                               ),
                             ),
                           ),
-                          rightChild: Container(
-                            constraints: const BoxConstraints(
-                              minHeight: 120,
-                            ),
+                          rightChild: TimelineElement(
+                            d,
                             color: index % 4 == 0
                                 ? Colors.amberAccent
                                 : index % 3 == 0
@@ -69,6 +82,15 @@ class _Content extends StatelessWidget {
                                     : index % 2 == 0
                                         ? Colors.redAccent
                                         : Colors.greenAccent,
+                            onDone: (bool value) {
+                              setState(() {
+                                _data = _data
+                                    .map((data) => data == d
+                                        ? data.copyWith(completed: value)
+                                        : data)
+                                    .toList(growable: false);
+                              });
+                            },
                           ),
                         );
                       },
@@ -84,7 +106,7 @@ class _Content extends StatelessWidget {
   }
 }
 
-const _mockData = [
+const mockData = [
   TimelineData(TimelineType.wake_up),
   TimelineData(TimelineType.water),
   TimelineData(TimelineType.exercise),
