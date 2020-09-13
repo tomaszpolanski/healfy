@@ -16,7 +16,7 @@ void main() {
       ),
     );
 
-    expect(find.byType(TimelineElement), findsOneWidget);
+    expect(find.byType(TimelineTask), findsOneWidget);
   });
 
   testWidgets('can be completed', (WidgetTester tester) async {
@@ -33,8 +33,8 @@ void main() {
 
     await tester.tap(find.byKey(completeIconKey));
     await tester.pumpAndSettle();
-    final TimelineElement element = tester.firstWidget(
-      find.byType(TimelineElement),
+    final TimelineTask element = tester.firstWidget(
+      find.byType(TimelineTask),
     );
 
     expect(element.data.completed, isTrue);

@@ -50,38 +50,31 @@ class _ContentState extends State<_Content> {
                   children: <Widget>[
                     ..._data.mapIndexed(
                       (index, d) {
-                        return TimelineTile(
-                          alignment: TimelineAlign.manual,
-                          lineX: 0.1,
+                        final color = index % 4 == 0
+                            ? Colors.amberAccent
+                            : index % 3 == 0
+                                ? Colors.lightBlue
+                                // ignore: use_is_even_rather_than_modulo
+                                : index % 2 == 0
+                                    ? Colors.redAccent
+                                    : Colors.greenAccent;
+                        final prevColor = (index - 1) % 4 == 0
+                            ? Colors.amberAccent
+                            : (index - 1) % 3 == 0
+                                ? Colors.lightBlue
+                                // ignore: use_is_even_rather_than_modulo
+                                : (index - 1) % 2 == 0
+                                    ? Colors.redAccent
+                                    : Colors.greenAccent;
+                        return TimelineElement(
+                          d,
+                          color: color,
+                          previousColor: prevColor,
                           isFirst: index == 0,
                           isLast: index == _data.length - 1,
-                          indicatorStyle: IndicatorStyle(
-                            width: 40,
-                            height: 40,
-                            color: Colors.blue,
-                            indicator: Container(
-                              width: 40,
-                              height: 40,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.blue,
-                              ),
-                              child: Icon(
-                                d.type.toIcon(),
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          rightChild: TimelineElement(
+                          child: TimelineTask(
                             d,
-                            color: index % 4 == 0
-                                ? Colors.amberAccent
-                                : index % 3 == 0
-                                    ? Colors.lightBlue
-                                    // ignore: use_is_even_rather_than_modulo
-                                    : index % 2 == 0
-                                        ? Colors.redAccent
-                                        : Colors.greenAccent,
+                            color: color,
                             onDone: (bool value) {
                               setState(() {
                                 _data = _data
@@ -102,6 +95,59 @@ class _ContentState extends State<_Content> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class TimelineElement extends StatelessWidget {
+  const TimelineElement(
+    this.data, {
+    Key key,
+    @required this.isFirst,
+    @required this.isLast,
+    @required this.color,
+    @required this.previousColor,
+    @required this.child,
+  }) : super(key: key);
+
+  final TimelineData data;
+  final bool isFirst;
+  final bool isLast;
+  final Color previousColor;
+  final Color color;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return TimelineTile(
+      alignment: TimelineAlign.manual,
+      lineX: 0.1,
+      isFirst: isFirst,
+      isLast: isLast,
+      bottomLineStyle: LineStyle(color: color),
+      topLineStyle: previousColor != null
+          ? LineStyle(
+              color: previousColor,
+            )
+          : null,
+      indicatorStyle: IndicatorStyle(
+        width: 40,
+        height: 40,
+        color: color,
+        indicator: Container(
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color,
+          ),
+          child: Icon(
+            data.type.toIcon(),
+            color: Colors.white,
+          ),
+        ),
+      ),
+      rightChild: child,
     );
   }
 }

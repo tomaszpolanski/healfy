@@ -11,7 +11,7 @@ void main() {
         Directionality(
           textDirection: TextDirection.ltr,
           child: Material(
-            child: TimelineElement(
+            child: TimelineTask(
               const TimelineData(TimelineType.wake_up, completed: true),
               color: Colors.white,
               onDone: (done) {
@@ -34,7 +34,7 @@ void main() {
         Directionality(
           textDirection: TextDirection.ltr,
           child: Material(
-            child: TimelineElement(
+            child: TimelineTask(
               const TimelineData(TimelineType.wake_up, completed: true),
               color: Colors.white,
               onDone: (done) {},
@@ -56,7 +56,7 @@ void main() {
         Directionality(
           textDirection: TextDirection.ltr,
           child: Material(
-            child: TimelineElement(
+            child: TimelineTask(
               const TimelineData(TimelineType.wake_up),
               color: Colors.white,
               onDone: (done) {
@@ -79,7 +79,7 @@ void main() {
         Directionality(
           textDirection: TextDirection.ltr,
           child: Material(
-            child: TimelineElement(
+            child: TimelineTask(
               // ignore: avoid_redundant_argument_values
               const TimelineData(TimelineType.wake_up, completed: false),
               color: Colors.white,
