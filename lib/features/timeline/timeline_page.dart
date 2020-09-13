@@ -41,12 +41,19 @@ class _Content extends StatelessWidget {
                           isLast: data.last == d,
                           indicatorStyle: IndicatorStyle(
                             width: 40,
+                            height: 40,
                             color: Colors.blue,
-                            iconStyle: IconStyle(
-                              color: Colors.white,
-                              iconData: index == 0
-                                  ? Icons.alarm
-                                  : Icons.accessibility,
+                            indicator: Container(
+                              width: 40,
+                              height: 40,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.blue,
+                              ),
+                              child: Icon(
+                                index == 0 ? Icons.alarm : Icons.accessibility,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                           rightChild: Container(
@@ -106,12 +113,4 @@ extension IterableEx<T> on Iterable<T> {
   List<T> sorted([int Function(T a, T b) compare]) {
     return List.of(this)..sort(compare);
   }
-}
-
-List<List<T>> chunks<T>(Iterable<T> values, int chunkSize) {
-  return values.fold([[]], (result, x) {
-    return result.last.length == chunkSize
-        ? (result..add([x]))
-        : (result..last.add(x));
-  });
 }
