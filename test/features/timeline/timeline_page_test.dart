@@ -27,9 +27,9 @@ void main() {
       const MaterialApp(
         home: TimelinePage(
           [
-            // ignore: avoid_redundant_argument_values
             TimelineData(
               TimelineType.wake_up,
+              // ignore: avoid_redundant_argument_values
               completed: false,
               text: 'Lorem Ipsum Donor',
             ),

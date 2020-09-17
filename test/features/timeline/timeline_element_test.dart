@@ -91,9 +91,9 @@ void main() {
           textDirection: TextDirection.ltr,
           child: Material(
             child: TimelineTask(
-              // ignore: avoid_redundant_argument_values
               const TimelineData(
                 TimelineType.wake_up,
+                // ignore: avoid_redundant_argument_values
                 completed: false,
                 text: 'Lorem Ipsum Donor',
               ),
