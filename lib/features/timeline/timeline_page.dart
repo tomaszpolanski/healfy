@@ -121,11 +121,11 @@ class TimelineElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return TimelineTile(
       alignment: TimelineAlign.manual,
-      lineX: 0.1,
+      lineXY: 0.1,
       isFirst: isFirst,
       isLast: isLast,
-      bottomLineStyle: LineStyle(color: color),
-      topLineStyle: previousColor != null
+      afterLineStyle: LineStyle(color: color),
+      beforeLineStyle: previousColor != null
           ? LineStyle(
               color: previousColor,
             )
@@ -147,7 +147,7 @@ class TimelineElement extends StatelessWidget {
           ),
         ),
       ),
-      rightChild: child,
+      endChild: child,
     );
   }
 }
