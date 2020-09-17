@@ -162,6 +162,7 @@ const mockData = [
   TimelineData(TimelineType.food, text: 'Food time!'),
   TimelineData(TimelineType.water, text: 'Grab a glass of water'),
   TimelineData(TimelineType.exercise, text: 'Lift some heavy things!'),
+  TimelineData(TimelineType.water, text: 'Grab a glass of vino Valeria!'),
 ];
 
 extension IterableEx<T> on Iterable<T> {
