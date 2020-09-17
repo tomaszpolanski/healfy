@@ -10,7 +10,10 @@ void main() {
       const MaterialApp(
         home: TimelinePage(
           [
-            TimelineData(TimelineType.wake_up),
+            TimelineData(
+              TimelineType.wake_up,
+              text: 'Lorem Ipsum Donor',
+            ),
           ],
         ),
       ),
@@ -24,8 +27,12 @@ void main() {
       const MaterialApp(
         home: TimelinePage(
           [
-            // ignore: avoid_redundant_argument_values
-            TimelineData(TimelineType.wake_up, completed: false),
+            TimelineData(
+              TimelineType.wake_up,
+              // ignore: avoid_redundant_argument_values
+              completed: false,
+              text: 'Lorem Ipsum Donor',
+            ),
           ],
         ),
       ),

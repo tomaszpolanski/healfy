@@ -12,7 +12,11 @@ void main() {
           textDirection: TextDirection.ltr,
           child: Material(
             child: TimelineTask(
-              const TimelineData(TimelineType.wake_up, completed: true),
+              const TimelineData(
+                TimelineType.wake_up,
+                completed: true,
+                text: 'Lorem Ipsum Donor',
+              ),
               color: Colors.white,
               onDone: (done) {
                 isDone = done;
@@ -35,7 +39,11 @@ void main() {
           textDirection: TextDirection.ltr,
           child: Material(
             child: TimelineTask(
-              const TimelineData(TimelineType.wake_up, completed: true),
+              const TimelineData(
+                TimelineType.wake_up,
+                completed: true,
+                text: 'Lorem Ipsum Donor',
+              ),
               color: Colors.white,
               onDone: (done) {},
             ),
@@ -45,7 +53,7 @@ void main() {
 
       final Icon icon = tester.firstWidget(find.byKey(completeIconKey));
 
-      expect(icon.color, Colors.green);
+      expect(icon.color, Colors.black);
     });
   });
 
@@ -57,7 +65,10 @@ void main() {
           textDirection: TextDirection.ltr,
           child: Material(
             child: TimelineTask(
-              const TimelineData(TimelineType.wake_up),
+              const TimelineData(
+                TimelineType.wake_up,
+                text: 'Lorem Ipsum Donor',
+              ),
               color: Colors.white,
               onDone: (done) {
                 isDone = done;
@@ -80,8 +91,12 @@ void main() {
           textDirection: TextDirection.ltr,
           child: Material(
             child: TimelineTask(
-              // ignore: avoid_redundant_argument_values
-              const TimelineData(TimelineType.wake_up, completed: false),
+              const TimelineData(
+                TimelineType.wake_up,
+                // ignore: avoid_redundant_argument_values
+                completed: false,
+                text: 'Lorem Ipsum Donor',
+              ),
               color: Colors.white,
               onDone: (done) {},
             ),

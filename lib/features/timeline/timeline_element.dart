@@ -18,20 +18,40 @@ class TimelineTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(left: 30, top: 8, bottom: 8, right: 10),
       constraints: const BoxConstraints(
         minHeight: 120,
       ),
-      color: color,
-      child: Align(
-        alignment: Alignment.bottomRight,
-        child: IconButton(
-          onPressed: () => onDone(!data.completed),
-          icon: Icon(
-            Icons.done,
-            key: completeIconKey,
-            color: data.completed ? Colors.green : Colors.white,
-          ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(2),
+        border: Border.all(
+          color: color,
+          width: 4,
         ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            data.text,
+            style: Theme.of(context).textTheme.headline6,
+          ),
+          Container(
+            color: color,
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: IconButton(
+                onPressed: () => onDone(!data.completed),
+                icon: Icon(
+                  data.completed ? Icons.close : Icons.done,
+                  key: completeIconKey,
+                  color: data.completed ? Colors.black : Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

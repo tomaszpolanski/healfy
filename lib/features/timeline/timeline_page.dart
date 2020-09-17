@@ -153,15 +153,15 @@ class TimelineElement extends StatelessWidget {
 }
 
 const mockData = [
-  TimelineData(TimelineType.wake_up),
-  TimelineData(TimelineType.water),
-  TimelineData(TimelineType.exercise),
-  TimelineData(TimelineType.food),
-  TimelineData(TimelineType.water),
-  TimelineData(TimelineType.exercise),
-  TimelineData(TimelineType.food),
-  TimelineData(TimelineType.water),
-  TimelineData(TimelineType.exercise),
+  TimelineData(TimelineType.wake_up, text: 'Wake up!'),
+  TimelineData(TimelineType.water, text: 'Grab a glass of water'),
+  TimelineData(TimelineType.exercise, text: 'Lift some heavy things!'),
+  TimelineData(TimelineType.food, text: 'Food time!'),
+  TimelineData(TimelineType.water, text: 'Grab a glass of water'),
+  TimelineData(TimelineType.exercise, text: 'Food time!'),
+  TimelineData(TimelineType.food, text: 'Food time!'),
+  TimelineData(TimelineType.water, text: 'Grab a glass of water'),
+  TimelineData(TimelineType.exercise, text: 'Lift some heavy things!'),
 ];
 
 extension IterableEx<T> on Iterable<T> {
