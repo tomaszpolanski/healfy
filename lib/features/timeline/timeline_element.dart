@@ -17,25 +17,24 @@ class TimelineTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
+      elevation: 10,
       margin: const EdgeInsets.only(left: 30, top: 8, bottom: 8, right: 10),
-      constraints: const BoxConstraints(
-        minHeight: 120,
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(2),
-        border: Border.all(
-          color: color,
-          width: 4,
-        ),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            data.text,
-            style: Theme.of(context).textTheme.headline6,
+          ConstrainedBox(
+            constraints: const BoxConstraints(
+              minHeight: 80,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                data.text,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
           ),
           Container(
             color: color,
