@@ -5,9 +5,9 @@ import 'package:healfy/features/timeline/timeline_model.dart';
 void main() {
   group('icons', () {
     <TimelineType, IconData>{
-      TimelineType.water: Icons.emoji_food_beverage,
-      TimelineType.food: Icons.fastfood_sharp,
-      TimelineType.exercise: Icons.sports_handball,
+      TimelineType.water: Icons.free_breakfast,
+      TimelineType.food: Icons.fastfood,
+      TimelineType.exercise: Icons.accessibility,
       TimelineType.wake_up: Icons.alarm,
     }.forEach((type, icon) {
       test('shows icon for $type', () {
