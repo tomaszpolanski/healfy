@@ -40,3 +40,4 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 macos/Flutter/GeneratedPluginRegistrant.swift
+test_driver/generic/generic_test.dart
