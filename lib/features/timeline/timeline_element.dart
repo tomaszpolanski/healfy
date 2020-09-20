@@ -36,7 +36,7 @@ class TimelineTask extends StatelessWidget {
               ),
             ),
           ),
-          Container(
+          Material(
             color: color,
             child: Align(
               alignment: Alignment.bottomRight,
