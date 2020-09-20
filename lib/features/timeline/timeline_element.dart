@@ -69,7 +69,7 @@ class TimelineContent extends StatelessWidget {
         : const SizedBox(
             height: 100,
             width: 100,
-            child: Rive('alarm', animation: 'play', repeat: 4),
+            child: Rive('alarm', animation: 'play', repeat: 1),
           );
   }
 }
