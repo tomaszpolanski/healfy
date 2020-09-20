@@ -4,7 +4,7 @@ import 'package:healfy/main.dart';
 
 void main() {
   testWidgets('Timeline is displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const HealfyApp());
 
     expect(find.byType(TimelinePage), findsOneWidget);
   });
