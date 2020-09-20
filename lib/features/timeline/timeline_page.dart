@@ -40,6 +40,9 @@ class _ContentState extends State<_Content> {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
+        SliverToBoxAdapter(
+          child: SizedBox(height: MediaQuery.of(context).padding.top),
+        ),
         SliverList(
           delegate: SliverChildListDelegate(
             <Widget>[
