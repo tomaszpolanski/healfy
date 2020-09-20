@@ -31,6 +31,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
+  fast_flutter_driver: ^1.1.0
 
 flutter:
   uses-material-design: true

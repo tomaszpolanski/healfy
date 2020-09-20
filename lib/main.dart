@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:healfy/features/timeline/timeline_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const HealfyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+class HealfyApp extends StatelessWidget {
+  const HealfyApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
