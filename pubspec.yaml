@@ -27,6 +27,7 @@ dependencies:
   equatable: ^1.2.5
   timeline_tile: ^1.0.0
   cupertino_icons: ^1.0.0
+  flare_flutter: ^2.0.6
 
 dev_dependencies:
   flutter_test:
@@ -36,4 +37,6 @@ dev_dependencies:
   fast_flutter_driver: ^1.1.0
 
 flutter:
+  assets:
+    - assets/
   uses-material-design: true
